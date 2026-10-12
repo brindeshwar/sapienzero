@@ -57,10 +57,11 @@ predecessor pieces to reuse, the owner's weekly time budget, and which LLM provi
 ## Housekeeping and risks (known, not yet fixed)
 
 - The repository is **public**, so everything committed is world-readable: never commit keys, `.env` files or private data.
-  Turn on secret scanning and push protection; CodeQL and dependency review become available and are still to be added.
-- The first GitHub Actions run passed (see above). Pull-request runs and branch protection are still untested.
-- Repository settings (branch protection, secret scanning, environments) are **not applied**: they are manual and listed in
-  the engineering handbook, section 9. Branch protection is available because the repository is public.
+  Secret scanning with push protection is on. CodeQL and dependency review are available and still to be added.
+- The first GitHub Actions run passed (see above), and pull-request runs also passed (PRs 1 and 2).
+- Repository settings from the engineering handbook (section 9) were **applied on 2026-10-12** and are recorded in
+  [settings-2026-10-12](../runbooks/settings-2026-10-12.md). A direct push to `main` was tested and rejected. Not yet done:
+  pinning actions by commit SHA, CodeQL, dependency review, environments (not needed before deployment exists).
 - Whether prompts sent through a **free-tier** Gemini key may be used by Google to improve its products is unverified
   (OQ-06); this matters before claiming that screenshots are never stored.
 - Action SHA pinning is pending a tool.
