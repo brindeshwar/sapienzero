@@ -19,3 +19,5 @@ cause, fix, and what will prevent it.
 GitHub repository settings, branch rules and environment settings are not stored in git. When they change, add a dated
 export or screenshots here (for example `settings-YYYY-MM-DD.md`) so a lost configuration can be rebuilt from the repository.
 The checklist to apply is in the [engineering handbook](../06-process/engineering-handbook.md) section 9.
+
+Exports so far: [settings-2026-10-12](settings-2026-10-12.md).
