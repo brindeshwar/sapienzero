@@ -1,0 +1,7 @@
+# Lint rules: pyflakes errors, pycodestyle errors, bugbear.
+line-length = 140
+target-version = "py312"
+extend-exclude = [".venv"]
+
+[lint]
+select = ["E", "F", "B"]

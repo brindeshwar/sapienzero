@@ -1,0 +1,22 @@
+.env
+.env.*
+!.env.example
+__pycache__/
+.venv/
+venv/
+*.pyc
+*.log
+.pytest_cache/
+.ruff_cache/
+client_secret*.json
+token.json
+*.pem
+*.db
+build/
+dist/
+*.spec
+# Raw evaluation data may contain private screen content: keep aggregates in docs, never the raw data.
+evals/**/data/
+# Run artifacts written by the agent (screenshots, traces)
+.sapienzero/
+runs/
