@@ -20,13 +20,13 @@ Documentation and tooling only.
 | Part | State | Checks (last run 2026-10-12) |
 |---|---|---|
 | Documentation system: `docs/`, `AGENTS.md`, `tools/check_docs.py` (31 tests, including dangling-reference detection) | Imported from the AskOverlay plan branch, renumbered and renamed; see the import commit | See the verification line in "Last session" |
-| CI: `ci.yml` (ruff lint, `ci-ok` aggregate) and `docs.yml` (documentation checks) | Ran on GitHub on 2026-10-12 for the first push: both `CI` (19 s) and `Docs` (12 s) succeeded | Green on `main` at 710ef0e |
+| CI: `ci.yml` (ruff lint, `ci-ok` aggregate) and `docs.yml` (documentation checks) | Ran on GitHub on 2026-10-12 for the first push: both `CI` (19 s) and `Docs` (12 s) succeeded | Green on `main` and on pull requests 1 to 3 (2026-10-12) |
 | GitHub scaffolding: issue forms, PR template, CODEOWNERS, Dependabot, `SECURITY.md`, `CONTRIBUTING.md` | Imported; paths adjusted | n/a |
 | Product code, test bed, evaluation harness | **Do not exist yet** | n/a |
 
-## Decisions in force
+## Decisions (none accepted yet)
 
-Proposed (under review): [ADR-0001](../decisions/0001-pivot-to-an-ai-test-agent.md) the product is an AI test agent,
+No decision is in force yet. Proposed (under review): [ADR-0001](../decisions/0001-pivot-to-an-ai-test-agent.md) the product is an AI test agent,
 ADR-0002 documentation as memory, ADR-0003 verdict computed from assertions, ADR-0004 MCP surface as plain tools,
 ADR-0005 local-first with optional service mode. Nothing is Accepted yet. See the [decision log](../decisions/README.md).
 The predecessor's decisions (AskOverlay ADR 0001 to 0008) stay in the `askoverlay` repository.
@@ -38,13 +38,19 @@ in [predecessor evidence](../05-evaluation/predecessor-evidence.md). No measurem
 
 ## Exact next step
 
-1. The owner sends [REVIEW-BRIEF](../REVIEW-BRIEF.md) to a reviewer and pastes the reply into a copy of the
-   [review feedback template](../templates/review-feedback-template.md). A fresh chat is started with the
-   [kickoff prompt](../handoff/kickoff-prompt.md).
-2. **Triage the feedback** (accept, reject, defer; record why), apply accepted changes to the documents on a branch, and
-   open a pull request. Run the independent cold-start drill ([drill log](drills.md)) with a fresh agent.
-3. Merge the plan, tag `plan-v0.1`, then decide ADR-0001 to ADR-0005 (Accepted or Rejected).
-4. If ADR-0001 is accepted, start **R1.0** of the [roadmap](../03-features-and-roadmap.md): the seeded-bug test bed, the
+**Right now the project is waiting for the owner.** The single next step is the outside review: the owner sends
+[REVIEW-BRIEF](../REVIEW-BRIEF.md) to a reviewer (as of 2026-10-12 it is being sent; not confirmed received) and pastes the
+reply into a copy of the [review feedback template](../templates/review-feedback-template.md), in a fresh chat started with
+the [kickoff prompt](../handoff/kickoff-prompt.md). Until the reply arrives an agent should not start the steps below: it
+may fix documentation gaps, answer questions and record the owner's answers to the open questions.
+
+After the reply arrives, in this order:
+
+1. **Triage the feedback** (accept, reject, defer; record why), apply accepted changes to the documents on a branch, and
+   open a pull request.
+2. Merge the plan, tag `plan-v0.1`, then decide ADR-0001 to ADR-0005 (Accepted or Rejected). The independent cold-start
+   drill was run once (see the [drill log](drills.md)); repeat it on the merged plan.
+3. If ADR-0001 is accepted, start **R1.0** of the [roadmap](../03-features-and-roadmap.md): the seeded-bug test bed, the
    30-test suite and the **frozen pass bar**, with **no agent code before the bar is frozen**
    (see [evaluation strategy](../05-evaluation/evaluation-strategy.md)).
 
@@ -74,5 +80,9 @@ predecessor pieces to reuse, the owner's weekly time budget, and which LLM provi
 to ADR-0001 to ADR-0005, renamed the package to `sapienzero`, rewrote CI and Dependabot for a repository without product
 code, added the predecessor-evidence page, the kickoff prompt and the review feedback template. Not copied on purpose: the
 overlay application code, the evaluation harness, any private data, keys and Docker files.
-Verified: see the commit message of the import for the exact checks run. **Not verified:** anything on GitHub itself and
-the independent cold-start drill.
+Then, the same day: closed and reopened OQ-01 and OQ-12 at the owner's request (both open, working answers SapienZero and
+public); applied the GitHub settings ([record](../runbooks/settings-2026-10-12.md)); ran the first independent cold-start
+drill (narrow FAIL, 14 gaps; see [drill log](drills.md)) and fixed the documentation gaps it found.
+Verified: documentation check, 31 tests, lint (in a clean environment), CI on GitHub (green), a rejected direct push to
+`main`, the drill by a fresh agent. **Not verified:** a second drill after the fixes; a full Mermaid parse of the diagrams in
+this repository (manual step, done in the predecessor before the import); the review has not happened yet.
