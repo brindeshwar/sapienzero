@@ -50,9 +50,9 @@ in [predecessor evidence](../05-evaluation/predecessor-evidence.md). No measurem
 
 ## Open questions
 
-See [open questions](../07-open-questions.md). The name is decided (SapienZero). Blocking: licence, which predecessor
-pieces to reuse, the owner's weekly time budget, and which LLM provider(s) the first measurements use. The repository is
-**public** (OQ-12, closed).
+See [open questions](../07-open-questions.md). **Awaiting the owner's answers:** the product name (OQ-01; SapienZero is the
+working name in use) and whether the repository stays public (OQ-12; it is public now). Also blocking: licence, which
+predecessor pieces to reuse, the owner's weekly time budget, and which LLM provider(s) the first measurements use.
 
 ## Housekeeping and risks (known, not yet fixed)
 

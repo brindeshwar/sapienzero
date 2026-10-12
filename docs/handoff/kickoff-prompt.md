@@ -79,8 +79,9 @@ will paste it here. After the feedback is applied, I will either start the proje
    needs an ADR first. Run the docs check and tests, commit with Conventional Commits, push the branch after I approve, and
    open a pull request.
 7. **Then ask me the open questions that block the start** (see `docs/07-open-questions.md`): licence, which pieces of the
-   predecessor to reuse, my weekly time budget, and which model provider and budget the first measurements use. Give a
-   recommendation for each. (The repository is public; that question is closed.)
+   predecessor to reuse, my weekly time budget, and which model provider and budget the first measurements use. Also ask me to
+   confirm the product name (OQ-01, working name SapienZero) and public versus private (OQ-12, currently public), and record
+   my answers in `docs/07-open-questions.md`. Give a recommendation for each.
 
 ## 5. Rules you must follow (also in AGENTS.md; this is the short version)
 
