@@ -20,7 +20,7 @@ Documentation and tooling only.
 | Part | State | Checks (last run 2026-10-12) |
 |---|---|---|
 | Documentation system: `docs/`, `AGENTS.md`, `tools/check_docs.py` (31 tests, including dangling-reference detection) | Imported from the AskOverlay plan branch, renumbered and renamed; see the import commit | See the verification line in "Last session" |
-| CI: `ci.yml` (ruff lint, `ci-ok` aggregate) and `docs.yml` (documentation checks) | Defined and YAML-validated; **has not run on GitHub until the first push is checked** | Commands simulated locally |
+| CI: `ci.yml` (ruff lint, `ci-ok` aggregate) and `docs.yml` (documentation checks) | Ran on GitHub on 2026-10-12 for the first push: both `CI` (19 s) and `Docs` (12 s) succeeded | Green on `main` at 710ef0e |
 | GitHub scaffolding: issue forms, PR template, CODEOWNERS, Dependabot, `SECURITY.md`, `CONTRIBUTING.md` | Imported; paths adjusted | n/a |
 | Product code, test bed, evaluation harness | **Do not exist yet** | n/a |
 
@@ -58,8 +58,7 @@ pieces to reuse, the owner's weekly time budget, and which LLM provider(s) the f
 
 - The repository is **public**, so everything committed is world-readable: never commit keys, `.env` files or private data.
   Turn on secret scanning and push protection; CodeQL and dependency review become available and are still to be added.
-- GitHub Actions has not run on this repository yet; the first push may reveal GitHub-specific rejections. Verify and
-  record the result here.
+- The first GitHub Actions run passed (see above). Pull-request runs and branch protection are still untested.
 - Repository settings (branch protection, secret scanning, environments) are **not applied**: they are manual and listed in
   the engineering handbook, section 9. Branch protection is available because the repository is public.
 - Whether prompts sent through a **free-tier** Gemini key may be used by Google to improve its products is unverified
