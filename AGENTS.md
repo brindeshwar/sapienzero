@@ -3,7 +3,7 @@
 This file is for **any AI coding agent** (Claude Code, Codex, Cursor, Copilot, ...) and for new human contributors.
 The repository is the project's only memory. Chats are disposable; if something matters, it must be written down here.
 
-## 1. Cold start: how to get fully in sync (about 10 minutes)
+## 1. Cold start: how to get fully in sync (about 10 minutes for an agent, 30 to 40 for a human)
 
 Read in this order, and do not start work until you have done all five:
 
@@ -12,7 +12,11 @@ Read in this order, and do not start work until you have done all five:
 3. [`docs/decisions/README.md`](docs/decisions/README.md): the decision log. Read every *Accepted* and *Proposed* ADR
    that touches the area you will change.
 4. [`docs/03-features-and-roadmap.md`](docs/03-features-and-roadmap.md): which release we are building and its exit gate.
-5. The design document for your area under [`docs/04-architecture/`](docs/04-architecture/).
+5. The design document for your area under [`docs/04-architecture/`](docs/04-architecture/). While no code exists
+   (phase R0), read the [high-level design](docs/04-architecture/hld.md).
+
+If STATUS says the next step is waiting on the owner (for example an outside review), do not start the following steps
+yourself: report what you read and ask what the owner wants.
 
 Then verify the repository matches the documents (section 4). If it does not, that is a documentation bug: fix it or
 report it before building on it.
@@ -70,14 +74,20 @@ report it before building on it.
 ## 4. Commands (all run from the repository root unless stated)
 
 Only the tooling exists today (no product code yet); the package adds its own commands and this table is updated in the
-same PR. Install the tools once: `python -m pip install -r requirements-dev.txt`.
+same PR. Create a virtual environment and install the tools once:
+
+| Shell | Commands |
+|---|---|
+| Git Bash | `python -m venv .venv && . .venv/Scripts/activate && python -m pip install -r requirements-dev.txt` |
+| PowerShell | `python -m venv .venv; .venv\Scripts\Activate.ps1; python -m pip install -r requirements-dev.txt` |
+| Linux or macOS | `python3 -m venv .venv && . .venv/bin/activate && python -m pip install -r requirements-dev.txt` |
 
 | Purpose | Command |
 |---|---|
 | Lint | `python -m ruff check . --config ruff.toml` |
 | Docs check | `python tools/check_docs.py` |
 | Docs-check tests | `python -m pytest -q tools` |
-| Diagram syntax | Mermaid blocks are parsed with the real library when changed (see lessons-learned L-23) |
+| Diagram syntax | **Manual** until a script exists: parse changed Mermaid blocks with the real library in a throwaway page (lessons-learned L-23). `check_docs.py` only checks structure |
 
 Use a project virtual environment (`.venv`, git-ignored). A command that "does nothing" usually ran in the wrong
 directory: relative paths to the interpreter break after `cd`.

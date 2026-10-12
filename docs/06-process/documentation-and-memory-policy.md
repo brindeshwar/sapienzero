@@ -64,7 +64,7 @@ The pull-request template carries this as a checklist ("Docs impact"), and the D
 `docs/status/STATUS.md` answers four questions for a cold reader: *What phase are we in? What exists and does it work?
 What was decided and what is proposed? What is the single next step?* It also lists open questions, known risks and
 housekeeping. It is rewritten (not appended) at the end of every session and carries a `Last updated:` date that the docs
-check reads (a stale or future date fails CI). The handoff template (`docs/templates/session-handoff-template.md`) is
+check reads (a future date fails CI; a date older than 14 days produces a warning). The handoff template (`docs/templates/session-handoff-template.md`) is
 pasted into the pull request description so the *story* of a session is in the git history too.
 
 ## 6. What is deliberately not in the repository
@@ -101,9 +101,10 @@ and at least quarterly.
 ## 8. What automation enforces (`tools/check_docs.py`, in CI)
 
 - Every ADR file: contiguous numbering, a `Status:` from the allowed set, a `Date:`, and a matching row in the index.
-- `docs/status/STATUS.md`: required headings present; `Last updated:` is a real date, not in the future, and not older than
-  the newest change to code (warning level at first, a failure later).
-- **No orphans:** every document under `docs/` (except templates) is linked from `docs/00-START-HERE.md`.
+- `docs/status/STATUS.md`: required headings present; `Last updated:` is a real date and not in the future (failure);
+  older than 14 days is a warning only. "Not older than the newest change to code" is a rule for people, not yet checked.
+- **No orphans:** every Markdown document under `docs/` (templates included) must be reachable from
+  `docs/00-START-HERE.md` by following links, directly or through other documents.
 - **No broken internal links:** every relative Markdown link points to an existing file.
 - **No dangling references:** every requirement id (`FR-nn`, `NFR-nn`), decision id (`ADR-nnnn`), open-question id (`OQ-nn`)
   and lesson id (`L-nn`) mentioned anywhere is defined in its home document.

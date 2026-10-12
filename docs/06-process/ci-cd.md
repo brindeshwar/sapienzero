@@ -17,7 +17,7 @@ mode) comes **last**, as decided; it is specified here so the design is complete
 | Workflow (file) | Trigger | Jobs | Required to merge |
 |---|---|---|---|
 | **CI** (`ci.yml`) | Pull request, push to `main` | `lint` (ruff), `types` (mypy), `unit` and `property` tests (Linux and Windows matrix), `contract` tests with a headless browser (Linux; Windows from R2), import-linter, coverage gate, package build; ends with an aggregate `ci-ok` job | Yes (`ci-ok`) |
-| **Docs** (`docs.yml`) | Pull request, push to `main` | `python tools/check_docs.py` (ADR index in sync, no orphan documents, no broken internal links, status file fresh); Markdown and Mermaid validation | Yes |
+| **Docs** (`docs.yml`) | Pull request, push to `main` | `python tools/check_docs.py` (ADR index in sync, no orphan documents, no broken internal links, status file fresh, dangling ids, Mermaid structural sanity). A full Mermaid parse with the real library is **manual** (lesson L-23); a script for it is a to-do | Yes |
 | **Security** (`security.yml`) | Pull request, weekly schedule | CodeQL analysis, dependency review (fails on high-severity or licence problems), secret scan; later container scan | Yes (from Tier 1) |
 | **Nightly evaluation** (`eval-nightly.yml`) | Schedule, manual dispatch | The evaluation subset with the **real model** under a token budget; uploads the manifest and aggregate results as artifacts; opens an issue if a bar regresses | No (informational; blocks release if red) |
 | **Release** (`release.yml`) | Tag `v*` | Rebuild from the tag, run the full CI and the full evaluation, build the package (and container from Tier 3), generate SBOM and provenance, create the GitHub Release with notes | n/a |
@@ -53,7 +53,7 @@ last with `if: always()`, inspects the result of every job it depends on, and fa
 
 | Tier | When | What exists |
 |---|---|---|
-| **0** (exists today) | Now | `ci.yml`: ruff lint; `ci-ok` aggregate. The package's tests join it at R1. **Has never run on GitHub** |
+| **0** (exists today) | Now | `ci.yml`: ruff lint; `ci-ok` aggregate. The package's tests join it at R1. Ran green on GitHub on 2026-10-12 |
 | **1** | R0 (this plan) | `docs.yml` and `tools/check_docs.py`; PR and issue templates; CODEOWNERS; Dependabot; `ci-ok` aggregate; `SECURITY.md`; branch protection applied; action SHA pinning; CodeQL and dependency review |
 | **2** | R1 to R2 | New package CI: types, matrix, contract tests in a real browser, import-linter, coverage gate; nightly evaluation; release workflow with release-please and trusted publishing of the package |
 | **3** | R5 (on demand) | Container build, scan (Trivy) and SBOM; staging and production deploy with environment approvals; synthetic load test job; provenance attestations; DORA metrics |
@@ -64,17 +64,18 @@ Each tier is complete and useful on its own; the next is added only when its tri
 
 | Item | State |
 |---|---|
-| `docs.yml`, `tools/check_docs.py` and its tests | Built and tested locally (validated YAML; the workflow itself has not run on GitHub) |
-| `ci-ok` aggregate job and concurrency, permissions, timeouts in `ci.yml` | Built; YAML validated; **not yet run on GitHub** |
+| `docs.yml`, `tools/check_docs.py` and its tests | Built, tested locally, and ran green on GitHub (first push and pull requests 1 to 3, 2026-10-12) |
+| `ci-ok` aggregate job and concurrency, permissions, timeouts in `ci.yml` | Built; ran green on GitHub (2026-10-12) |
 | Issue forms, PR template, CODEOWNERS, Dependabot, `SECURITY.md` | Built; YAML and issue-form structure validated |
-| Branch protection and repository settings | **Pending**: manual, applied after the first push using the handbook checklist |
-| Action SHA pinning | **Pending**: needs a tool, after the first push |
+| Branch protection and repository settings | **Applied 2026-10-12** and tested with a rejected direct push; see [settings record](../runbooks/settings-2026-10-12.md) |
+| Action SHA pinning | **Pending**: needs a tool |
 | CodeQL and dependency review | **Pending**: available while the repository is public (OQ-12 still open); to be added after the first CI run is checked |
 | Types job (mypy) | Pending: there is no new package to type-check until R1 |
 
 ## 5. Required status checks (names to put in branch protection)
 
-From Tier 1: `ci-ok`, `docs`, `codeql`, `dependency-review`. The job names are stable on purpose; renaming one requires
+Today only `ci-ok` and `docs` exist and are required. `codeql` and `dependency-review` are added to the required list in the
+same change that creates those jobs. The job names are stable on purpose; renaming one requires
 updating the protection rule in the same change and a note in the pull request.
 
 ## 6. The release path

@@ -31,6 +31,7 @@ at controls on your screen). That project continues separately; what it measured
 ## Checks
 
 ```
+python -m venv .venv            # then activate it (see AGENTS.md section 4 for your shell)
 python -m pip install -r requirements-dev.txt
 python tools/check_docs.py
 python -m pytest -q tools
