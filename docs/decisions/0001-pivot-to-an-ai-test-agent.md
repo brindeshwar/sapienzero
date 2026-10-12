@@ -56,8 +56,8 @@ the source commit recorded (open question OQ-03).
 
 - A larger and riskier scope than the previous product; mitigated by gates with kill criteria (the R1.1 spike must meet or
   nearly meet the frozen bar before more is built).
-- The old product name no longer fit; the new product is named SapienZero (OQ-01, decided 2026-10-12; trademark and
-  domain checks are still to do before anything is published).
+- The old product name no longer fit; the working name is SapienZero (OQ-01, still open for the owner to confirm;
+  trademark and domain checks are still to do before anything is published).
 - Value to the owner shifts to the engineering story and a tool they can use on their own projects, more than to a consumer
   product. This is acceptable and stated.
 - Competitive claims must be limited to what is measured; positioning is "measured, supervisable, local-first, honest verdicts",
