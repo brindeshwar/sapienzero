@@ -79,8 +79,8 @@ will paste it here. After the feedback is applied, I will either start the proje
    needs an ADR first. Run the docs check and tests, commit with Conventional Commits, push the branch after I approve, and
    open a pull request.
 7. **Then ask me the open questions that block the start** (see `docs/07-open-questions.md`): licence, which pieces of the
-   predecessor to reuse, my weekly time budget, which model provider and budget the first measurements use, and public or
-   private repository. Give a recommendation for each.
+   predecessor to reuse, my weekly time budget, and which model provider and budget the first measurements use. Give a
+   recommendation for each. (The repository is public; that question is closed.)
 
 ## 5. Rules you must follow (also in AGENTS.md; this is the short version)
 
@@ -103,7 +103,7 @@ will paste it here. After the feedback is applied, I will either start the proje
 - The `Write` tool keeps an existing file's encoding. Check for control characters after writing text that contains
   backslashes.
 - Create a virtual environment `.venv` (git-ignored) and install `requirements-dev.txt` once.
-- GitHub account: `brindeshwar`; the repository is `brindeshwar/sapienzero` (private to start with). Pushing a branch for the
+- GitHub account: `brindeshwar`; the repository is `brindeshwar/sapienzero` (**public**: never commit secrets or private data). Pushing a branch for the
   first time needs my approval.
 
 ## 7. End of every session (mandatory)

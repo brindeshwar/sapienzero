@@ -51,17 +51,17 @@ in [predecessor evidence](../05-evaluation/predecessor-evidence.md). No measurem
 ## Open questions
 
 See [open questions](../07-open-questions.md). The name is decided (SapienZero). Blocking: licence, which predecessor
-pieces to reuse, the owner's weekly time budget, which LLM provider(s) the first measurements use, and whether the
-repository is public or private (OQ-12).
+pieces to reuse, the owner's weekly time budget, and which LLM provider(s) the first measurements use. The repository is
+**public** (OQ-12, closed).
 
 ## Housekeeping and risks (known, not yet fixed)
 
-- The repository is **private** to start with; the public or private decision (OQ-12) also decides whether CodeQL and
-  dependency review are available.
+- The repository is **public**, so everything committed is world-readable: never commit keys, `.env` files or private data.
+  Turn on secret scanning and push protection; CodeQL and dependency review become available and are still to be added.
 - GitHub Actions has not run on this repository yet; the first push may reveal GitHub-specific rejections. Verify and
   record the result here.
 - Repository settings (branch protection, secret scanning, environments) are **not applied**: they are manual and listed in
-  the engineering handbook, section 9. Branch protection on a private repository may need a paid plan (to verify).
+  the engineering handbook, section 9. Branch protection is available because the repository is public.
 - Whether prompts sent through a **free-tier** Gemini key may be used by Google to improve its products is unverified
   (OQ-06); this matters before claiming that screenshots are never stored.
 - Action SHA pinning is pending a tool.

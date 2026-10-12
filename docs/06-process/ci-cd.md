@@ -69,7 +69,7 @@ Each tier is complete and useful on its own; the next is added only when its tri
 | Issue forms, PR template, CODEOWNERS, Dependabot, `SECURITY.md` | Built; YAML and issue-form structure validated |
 | Branch protection and repository settings | **Pending**: manual, applied after the first push using the handbook checklist |
 | Action SHA pinning | **Pending**: needs a tool, after the first push |
-| CodeQL and dependency review | **Pending, blocked by OQ-12**: they need the repository to be public, or GitHub Advanced Security on a private one |
+| CodeQL and dependency review | **Pending**: available now that the repository is public (OQ-12 closed); to be added after the first CI run is checked |
 | Types job (mypy) | Pending: there is no new package to type-check until R1 |
 
 ## 5. Required status checks (names to put in branch protection)
