@@ -65,7 +65,7 @@ will paste it here. After the feedback is applied, I will either start the proje
    tests, lint). Report the real results. If the repository and the documents disagree, report it; that is a documentation
    bug.
 3. **Report back to me, in plain language and under 300 words:** what the project is, the current phase and exact next step,
-   three decisions in force and why, how to run the checks, what is deliberately not in the repository and how it is
+   three decisions (whether each is Accepted or Proposed) and why, how to run the checks, what is deliberately not in the repository and how it is
    recovered, and which gate we are working toward. This is the cold-start drill; record the result in
    `docs/status/drills.md` (state that it is a real fresh-agent drill, and list any gap you found).
 4. **Wait for my friend's feedback.** Do not invent feedback and do not start the next step before I paste it.
