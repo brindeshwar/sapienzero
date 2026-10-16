@@ -89,7 +89,7 @@ and at least quarterly.
 
 1. Start a **fresh** agent session with only a clean checkout (no prior chat, no assistant memory).
 2. Give it exactly this prompt: *"Read AGENTS.md and follow its cold-start steps. Then answer: (a) what this project is in
-   three sentences; (b) the current phase and the exact next step; (c) three decisions in force and why; (d) how to run the
+   three sentences; (b) the current phase and the exact next step; (c) three decisions, whether each is Accepted or Proposed, and why; (d) how to run the
    tests and the docs check; (e) what is not in the repository and how to recover it; (f) which release gate we are working
    toward and what it requires."*
 3. Compare each answer with the documents. **Pass = all six correct without asking a human anything.**
